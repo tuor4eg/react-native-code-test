@@ -10,18 +10,18 @@ This app has to demonstrate level of applicant's knowledge of React Native and h
 
 When the app starts, at first, it demonstrate loading screen. It represents pulsing animation, that lasts 3 sec. Then main screen of application loads.
 
-![Loading Screen](//screenshots/01_loadScreen.png)
+![Loading Screen](./screenshots/01_loadScreen.png)
 
 Main screen shows the list of fetched peolpe [reqres.in](https://reqres.in/). 
 When main screen loads it begins to request destination URL and display people. 
 Every item in the list shows person's avatar, first name and last name. 
 When list is out of phone screen's limit, the loading stops. 
 
-![Main Screen](//screenshots/02_mainScreen.png)
+![Main Screen](./screenshots/02_mainScreen.png)
 
 Wher user starts to scroll page, the loading continues. It marks by spinning indicator at the bottom of the screen.
 
-![Main Screen Load](//screenshots/03_mainScreen_load.png)
+![Main Screen Load](./screenshots/03_mainScreen_load.png)
 
 If app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
 
