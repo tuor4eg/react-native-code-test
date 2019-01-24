@@ -1,27 +1,47 @@
-# Ombori React Native Code Test
+# Ombori Project (React Native Code Test)
 
-Hi there, we're really excited that you've made it this far in our interview process and look forward to getting to know you better.
+Ombori Project is a React Native wriiten mobile application. It's purpose is to show list of people from [reqres.in](https://reqres.in/).
 
-At Ombori, we strive to build fantastic apps using well structured and efficient code.
-The purpose of this task is to see how you solve problems and to make sure that you follow our linting rules as well as industry best practices.
+##Motivation
 
-We've scaffolded a very basic project that will serve as your starting point for the task.
-Make sure you've got eslint integrated in your editor or run the lint task and fix any errors before submitting your code for review. If there's a rule you disagree with, you can change it but we will ask you to motivate why during our feedback session on this task.
+This app has to demonstrate level of applicant's knowledge of React Native and his common programming skills.
 
-___
+##Presentation
 
-What the test app should do:
+When the app starts, at first, it demonstrate loading screen. It represents pulsing animation, that lasts 3 sec. Then main screen of application loads.
 
-* Display a custom loading component for 3 seconds that uses the [React Native Animated library](https://facebook.github.io/react-native/docs/animated.html)
-* Fetch user data from https://reqres.in/
-* Display those users in a scrollable view that lazy loads more users when you've reached the bottom of the list, if there are no more users to load it should indicate that there are no more users.
+![Loading Screen](//screenshots/01_loadScreen.png)
 
-We've prepared some screenshots in the design folder as well as a video of what the loading component should look like.
+Main screen shows the list of fetched peolpe [reqres.in](https://reqres.in/). 
+When main screen loads it begins to request destination URL and display people. 
+Every item in the list shows person's avatar, first name and last name. 
+When list is out of phone screen's limit, the loading stops. 
 
-___
+![Main Screen](//screenshots/02_mainScreen.png)
 
-Those are the requirements. If you wish to show off more of your skillset, feel free to expand upon the app, perhaps integrating a state management library like Redux to handle the fetching of data or implementing a router using something like React Navigtion. If you're really into functional programming, feel free to use something like Ramda. It's really up to you!
+Wher user starts to scroll page, the loading continues. It marks by spinning indicator at the bottom of the screen.
 
-We put no strict requirements on how you choose to solve any of the points in this task apart from the requirement that you use Animated to implement the loading indicator. We only ask that you be able to motivate your choices.
+![Main Screen Load](//screenshots/03_mainScreen_load.png)
 
-![You got this!](https://media.giphy.com/media/ClcWrARkrq1GM/giphy.gif)
+If app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
+
+##Technology
+
+The application's written in React Native framework. It consists of five modules.
+1. index.js - React Naive component, the main module, which import all others and provide the logic of application.
+2. AnimationPulse.js - React Native component for rendering the loading screen. It contains animated seqence that uses the React Native Animated library.
+3. Api.js - JavaScript module with API to connect to destination server. This module provides lower level of abstraction in application's model.
+4. UserList.js - React Native component for rendering list of people. It consists of title and scrollable list view.
+5. styles.js -  Module contains all styles, that app's components use.
+
+##Linter
+
+Before submitting this code, all of linter's notices was checked and fixed. The only error was about function "fetch". The applicant added this policy to .eslintrc:
+```"globals": {
+  "fetch": false
+}```
+Fetch is not a React Native's standard function, so it causes linter's error. But it's JavaScript's function that works from the box well. So, it hasn't be declared.
+
+##Author
+
+The Ombori Project's made by [tuor4eg](https://github.com/tuor4eg). Thanks for your attention!
