@@ -1,58 +1,77 @@
 /**
- * Sample React Native App
+ * Main application module
  * https://github.com/facebook/react-native
+ *
+ * @format
  * @flow
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { View } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import ServerApi from './src/Api';
+import UserList from './src/UserList';
+import AnimationPulse from './src/AnimationPulse';
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
+import styles from './src/styles';
+
+const host = 'https://reqres.in';
+
+const api = new ServerApi(host);
+
+export default class App extends Component {
+  state = {
+    loading: false,
+    loadApp: true,
+    userList: [],
+    page: 1,
+    totalPages: null,
+  };
+
+  componentDidMount() {
+    this.getUserList();
+  }
+
+  getUserList = async () => {
+    this.setState({ loading: true });
+    const query = `/api/users?page=${this.state.page}`;
+    try {
+      const data = await api.getUserList(query);
+      this.setState({
+        userList: [...this.state.userList, ...data.data],
+        page: this.state.page + 1,
+        totalPages: data.total_pages,
+        loading: false,
+      });
+    } catch (error) {
+      this.setState({ loading: false });
+    }
+  };
+
+  isDone = () => this.setState({ loadApp: false });
+
+  renderIntro() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+      <View style={styles.loadWrapper}>
+        <AnimationPulse isDone={this.isDone} />
+        <View style={styles.innerCircle} />
       </View>
     );
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+  renderUserList() {
+    return (
+      <UserList
+        userList={this.state.userList}
+        page={this.state.page}
+        totalPages={this.state.totalPages}
+        getUserList={this.getUserList}
+        loading={this.state.loading}
+      />
+    );
+  }
+
+  render() {
+    return this.state.loadApp ? this.renderIntro() : this.renderUserList();
+  }
+}

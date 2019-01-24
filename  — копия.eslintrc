@@ -11,8 +11,5 @@
         ]
       }
     ]
-  },
-  "globals": {
-    "fetch": false
   }
 }
