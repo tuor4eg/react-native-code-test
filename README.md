@@ -25,6 +25,8 @@ When user starts to scroll page, the loading continues. It marks by spinning ind
 
 If the app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
 
+To refresh the list, user have to scroll up and swipe. The screen'll clear and the loading begins from the start.
+
 ## Technology
 
 The application's written in React Native framework. It consists of five modules.
