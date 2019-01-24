@@ -23,7 +23,7 @@ Wher user starts to scroll page, the loading continues. It marks by spinning ind
 
 ![Main Screen Load](./screenshots/03_mainScreen_load.png)
 
-If app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
+If the app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
 
 ## Technology
 
