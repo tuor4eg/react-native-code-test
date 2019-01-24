@@ -1,12 +1,12 @@
-# Ombori Project (React Native Code Test)
+#  Ombori Project (React Native Code Test)
 
 Ombori Project is a React Native wriiten mobile application. It's purpose is to show list of people from [reqres.in](https://reqres.in/).
 
-##Motivation
+## Motivation
 
 This app has to demonstrate level of applicant's knowledge of React Native and his common programming skills.
 
-##Presentation
+## Presentation
 
 When the app starts, at first, it demonstrate loading screen. It represents pulsing animation, that lasts 3 sec. Then main screen of application loads.
 
@@ -25,7 +25,7 @@ Wher user starts to scroll page, the loading continues. It marks by spinning ind
 
 If app has loaded all of data, and user try to scroll down, standard Andriod's semicircle-shape indicator shows that no more people can be loaded.
 
-##Technology
+## Technology
 
 The application's written in React Native framework. It consists of five modules.
 1. index.js - React Naive component, the main module, which import all others and provide the logic of application.
@@ -34,7 +34,7 @@ The application's written in React Native framework. It consists of five modules
 4. UserList.js - React Native component for rendering list of people. It consists of title and scrollable list view.
 5. styles.js -  Module contains all styles, that app's components use.
 
-##Linter
+## Linter
 
 Before submitting this code, all of linter's notices was checked and fixed. The only error was about function "fetch". The applicant added this policy to .eslintrc:
 ```"globals": {
@@ -42,6 +42,6 @@ Before submitting this code, all of linter's notices was checked and fixed. The 
 }```
 Fetch is not a React Native's standard function, so it causes linter's error. But it's JavaScript's function that works from the box well. So, it hasn't be declared.
 
-##Author
+## Author
 
 The Ombori Project's made by [tuor4eg](https://github.com/tuor4eg). Thanks for your attention!
