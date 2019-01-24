@@ -37,9 +37,11 @@ The application's written in React Native framework. It consists of five modules
 ## Linter
 
 Before submitting this code, all of linter's notices was checked and fixed. The only error was about function "fetch". The applicant added this policy to .eslintrc:
-```"globals": {
+```"javascript
+globals": {
   "fetch": false
-}```
+}
+```
 Fetch is not a React Native's standard function, so it causes linter's error. But it's JavaScript's function that works from the box well. So, it hasn't be declared.
 
 ## Author
