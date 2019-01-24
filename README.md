@@ -1,6 +1,6 @@
 #  Ombori Project (React Native Code Test)
 
-Ombori Project is a React Native wriiten mobile application. It's purpose is to show list of people from [reqres.in](https://reqres.in/).
+Ombori Project is a React Native written mobile application. It's purpose is to show list of people from [reqres.in](https://reqres.in/).
 
 ## Motivation
 
