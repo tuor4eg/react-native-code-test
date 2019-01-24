@@ -47,6 +47,8 @@ export default class UserList extends Component {
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={this.renderSeparator}
           ListFooterComponent={() => this.renderIndicator()}
+          refreshing={this.props.refreshing}
+          onRefresh={() => this.props.refreshUserList()}
         />
       </View>
     );
@@ -63,4 +65,6 @@ UserList.propTypes = {
     avatar: PropTypes.string,
   })).isRequired,
   getUserList: PropTypes.func.isRequired,
+  refreshing: PropTypes.bool.isRequired,
+  refreshUserList: PropTypes.func.isRequired,
 };

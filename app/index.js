@@ -25,7 +25,8 @@ export default class App extends Component {
     loadApp: true,
     userList: [],
     page: 1,
-    totalPages: null,
+    totalPages: 0,
+    refreshing: false,
   };
 
   componentDidMount() {
@@ -48,6 +49,11 @@ export default class App extends Component {
     }
   };
 
+  refreshUserList = async () => {
+    await this.setState({ userList: [], page: 1, totalPages: 0 });
+    this.getUserList();
+  }
+
   isDone = () => this.setState({ loadApp: false });
 
   renderIntro() {
@@ -67,6 +73,8 @@ export default class App extends Component {
         totalPages={this.state.totalPages}
         getUserList={this.getUserList}
         loading={this.state.loading}
+        refreshing={this.state.refreshing}
+        refreshUserList={this.refreshUserList}
       />
     );
   }
