@@ -19,7 +19,7 @@ When list is out of phone screen's limit, the loading stops.
 
 ![Main Screen](./screenshots/02_mainScreen.png)
 
-Wher user starts to scroll page, the loading continues. It marks by spinning indicator at the bottom of the screen.
+When user starts to scroll page, the loading continues. It marks by spinning indicator at the bottom of the screen.
 
 ![Main Screen Load](./screenshots/03_mainScreen_load.png)
 
