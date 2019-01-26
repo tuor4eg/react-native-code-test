@@ -15,14 +15,28 @@ import styles from './styles';
 export default class UserList extends Component {
   renderSeparator = () => <View style={styles.separator} />;
 
-  renderIndicator() {
+  renderIndicator = () => {
     if (this.props.page <= this.props.totalPages) {
       return <ActivityIndicator size="small" />;
     }
     return null;
-  }
+  };
+
+  renderItem = ({ item }) => (
+    <View style={styles.container}>
+      <View style={styles.flatListItem}>
+        <Image source={{ uri: item.avatar }} style={styles.roundImage} />
+      </View>
+      <Text style={styles.cellText}>
+        {item.first_name} {item.last_name}
+      </Text>
+    </View>
+  );
 
   render() {
+    const {
+      userList, refreshing, refreshUserList, getUserList,
+    } = this.props;
     return (
       <View style={styles.wrapper}>
         <StatusBar backgroundColor="#F1F1F1" barStyle="dark-content" />
@@ -30,25 +44,16 @@ export default class UserList extends Component {
           <Text style={styles.titleText}>Users</Text>
         </View>
         <FlatList
-          style={{ flex: 1 }}
-          data={this.props.userList}
-          onEndReached={this.props.getUserList}
+          style={styles.flatList}
+          data={userList}
+          onEndReached={getUserList}
           onEndReachedThreshold={0.1}
-          renderItem={({ item }) => (
-            <View style={styles.container}>
-              <View style={{ paddingLeft: 16, paddingRight: 24 }}>
-                <Image source={{ uri: item.avatar }} style={styles.roundImage} />
-              </View>
-              <Text style={styles.cellText}>
-                {item.first_name} {item.last_name}
-              </Text>
-            </View>
-          )}
+          renderItem={this.renderItem}
           keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={this.renderSeparator}
-          ListFooterComponent={() => this.renderIndicator()}
-          refreshing={this.props.refreshing}
-          onRefresh={() => this.props.refreshUserList()}
+          ListFooterComponent={this.renderIndicator}
+          refreshing={refreshing}
+          onRefresh={refreshUserList}
         />
       </View>
     );

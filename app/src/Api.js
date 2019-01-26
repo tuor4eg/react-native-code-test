@@ -14,6 +14,7 @@ export default class ServerApi {
   getUserList = async (query) => {
     const res = await fetch(`${this.host}${query}`, {
       method: 'GET',
+      'Content-Type': 'application/json',
     });
     const data = await res.json();
     return data;

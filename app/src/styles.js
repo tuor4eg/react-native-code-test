@@ -54,6 +54,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  flatList: {
+    flex: 1,
+  },
+  flatListItem: {
+    paddingLeft: 16,
+    paddingRight: 24,
+  },
   separator: {
     height: 1,
     backgroundColor: colors.separator,
@@ -63,11 +70,6 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 36,
-  },
-  last: {
-    position: 'absolute',
-    right: 16,
-    bottom: 16,
   },
   innerCircle: {
     width: 30,

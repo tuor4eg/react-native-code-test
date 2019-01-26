@@ -49,10 +49,7 @@ export default class App extends Component {
     }
   };
 
-  refreshUserList = async () => {
-    await this.setState({ userList: [], page: 1, totalPages: 0 });
-    this.getUserList();
-  }
+  refreshUserList = () => this.setState({ userList: [], page: 1, totalPages: 0 }, this.getUserList);
 
   isDone = () => this.setState({ loadApp: false });
 

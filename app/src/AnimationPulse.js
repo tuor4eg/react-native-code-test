@@ -13,8 +13,8 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 export default class AnimationPulse extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.animated = new Animated.Value(0);
   }
 
@@ -23,7 +23,7 @@ export default class AnimationPulse extends Component {
       toValue: 1,
       duration: 3000,
       useHardwareTimer: true,
-    }).start(() => this.props.isDone());
+    }).start(this.props.isDone);
   }
 
   render() {
